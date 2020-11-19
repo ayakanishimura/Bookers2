@@ -1,2 +1,9 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+<h1>Editing Book</h1>
+<%= form_with model:@book, local:true do |book| %>
+<h4>Title<h4>
+  <%= book.text_field :title, autofocus: true, id:"inputTitle", placeholder:"タイトル"%>
+<h4>Opinion</h4>
+  <%= book.text_area :body, autofocus: true, id:"inputBody", placeholder:"本文"%>
+  <%= book.submit "Update Book" %>
+<% end %>
+
