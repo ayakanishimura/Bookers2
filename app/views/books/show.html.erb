@@ -1,11 +1,27 @@
-<p><%= notice %></p>
+<main>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <%= render 'layouts/sidemenu', {user:@showbook.user, book:@book} %>
+      <div class="col-md-8 offset-md-1">
+        <h1>Book detail</h1>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag @showbook.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
+              <%= link_to user_path(@showbook.user) do %><%= @showbook.user.name %><% end %></td>
+              <td><%= link_to book_path(@showbook.id) do %><%= @showbook.title %><% end %></td>
+              <td><%= @showbook.body %></td>
+              <% if @showbook.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@showbook.id), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@showbook), method: :delete, class: "btn btn-sm btn-danger" %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
 
-<h1>Book detail</h1>
-  <p>投稿ユーザー画像：<%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p>name：<%= @book.user.name %></p>
-  <p>Title：<%= @book.title %></p>
-  <p>body：<%= @book.body %></p>
-<% if @book.user == current_user %>
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  <%= link_to "Destroy", book_path(@book), method: :delete %>
-<% end %>
+
+

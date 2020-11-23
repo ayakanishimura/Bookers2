@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+.navbar-nav {
+  flex-direction: unset;
+}
+
+li {
+  margin-right: 20px;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
