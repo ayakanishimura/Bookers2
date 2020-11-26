@@ -26,7 +26,6 @@
 <%= form_with model: book, url: books_path, local: true do |f| %>
     <label for="book_title">Title</label><br>
     <%= f.text_field :title %>
-  </div>
   <div class="form-group">
     <label for="book_opinion">Opinion</label><br>
     <%= f.text_area :body %>
