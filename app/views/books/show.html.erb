@@ -22,12 +22,13 @@
         <div class="book-comment">
           <table>
           <tbody>
-            <% @book.book_comments.each do |book_comment| %>
+            <% @showbook.book_comments.each do |book_comment| %>
             <tr>
-              <td> <%= book_comment.user.name %></td>
+              <td><%= image_tag('no_image.jpg') %>
+                 <%= link_to user_path(@showbook.user) do %><%= book_comment.user.name %><% end %></td>
               <td> <%= book_comment.comment %></td>
               <% if book_comment.user == current_user %>
-              <td> <%= link_to "削除", book_book_comments_path(@book, @book_comment), method: :delete %>
+              <td> <%= link_to "削除", book_book_comment_path(@showbook, book_comment), method: :delete,class: "btn btn-sm btn-danger destroy_book_#{@book.id}" %>
               </td>
               <% end %>
             <% end %>
@@ -37,9 +38,9 @@
         </div>
 
         <div class="new-comment">
-          <%= form_with(model:[@book,@book_comment], local: true) do |f| %>
+          <%= form_with(model:[@showbook,@book_comment], local: true) do |f| %>
           <%= f.text_area :comment, row:'5' %>
-          <%= f.submit %>
+          <%= f.submit "送信" %>
           <% end %>
         </div>
 
